@@ -1495,7 +1495,7 @@
 
       // Must be a for, otherwise we get the most wide matching route, aka "error"
       for(var ii = 0; len; ii++){
-          var handler = this.handlers[ii];
+        var handler = this.handlers[ii];
 
         if (handler.route.test(fragment)) {
           _handler = handler;
@@ -1503,11 +1503,19 @@
         } 
       }
 
+      var params = this._extractParameters(handler.route, fragment);
+      console.log('params', params);
       return _handler;
     },
 
-
-
+    _extractParameters: function(route, fragment) {
+      var params = route.exec(fragment).slice(1);
+      return _.map(params, function(param, i) {
+        // Don't decode the search params.
+        if (i === params.length - 1) return param || null;
+        return param ? decodeURIComponent(param) : null;
+      });
+    },
 
 
     // Save a fragment into the hash history, or replace the URL state if the

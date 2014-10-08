@@ -1255,7 +1255,7 @@
         router.trigger.apply(router, ['route:' + name].concat(args));
         router.trigger('route', name, args);
         Backbone.history.trigger('route', router, name, args);
-      });
+      }, name);
       return this;
     },
 
@@ -1276,6 +1276,8 @@
     // routes can be defined at the bottom of the route map.
     _bindRoutes: function() {
       if (!this.routes) return;
+      
+
       this.routes = _.result(this, 'routes');
       var route, routes = _.keys(this.routes);
       while ((route = routes.pop()) != null) {
@@ -1455,8 +1457,8 @@
 
     // Add a route to be tested when the fragment changes. Routes added later
     // may override previous routes.
-    route: function(route, callback) {
-      this.handlers.unshift({route: route, callback: callback});
+    route: function(route, callback, routeName) {
+      this.handlers.unshift({route: route, callback: callback, routeName: routeName});
     },
 
     // Checks the current URL to see if it has changed, and if it has,
@@ -1475,7 +1477,6 @@
     // match, returns `true`. If no defined routes matches the fragment,
     // returns `false`.
     loadUrl: function(fragment) {
-      debugger;
       fragment = this.fragment = this.getFragment(fragment);
       return _.any(this.handlers, function(handler) {
         if (handler.route.test(fragment)) {
@@ -1484,6 +1485,30 @@
         }
       });
     },
+
+
+    getUrlHandler: function(fragment) {
+     
+      // TODO: remove first /
+      var _handler = null;
+      var len = this.handlers.length;
+
+      // Must be a for, otherwise we get the most wide matching route, aka "error"
+      for(var ii = 0; len; ii++){
+          var handler = this.handlers[ii];
+
+        if (handler.route.test(fragment)) {
+          _handler = handler;
+          break;
+        } 
+      }
+
+      return _handler;
+    },
+
+
+
+
 
     // Save a fragment into the hash history, or replace the URL state if the
     // 'replace' option is passed. You are responsible for properly URL-encoding

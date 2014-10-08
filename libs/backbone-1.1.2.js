@@ -1475,6 +1475,7 @@
     // match, returns `true`. If no defined routes matches the fragment,
     // returns `false`.
     loadUrl: function(fragment) {
+      debugger;
       fragment = this.fragment = this.getFragment(fragment);
       return _.any(this.handlers, function(handler) {
         if (handler.route.test(fragment)) {

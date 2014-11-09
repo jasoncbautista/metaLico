@@ -1,4 +1,4 @@
-var http = require("http");
+var http = require("https");
 
 var express = require('express');
 
@@ -17,9 +17,9 @@ app.get('/', function(req, res){
 
 
 var options = {
-  host: "https://rest.sqor.com",
+  host: "https://sqor.com",
   port: 80,
-  path: '/rest/entities/26739?detail=full'
+  path: 'rest/entities/26739?detail=full'
   //, method: 'GET'
 };
 

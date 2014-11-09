@@ -19,7 +19,7 @@ app.get('/', function(req, res){
 var options = {
   host: "https://sqor.com",
   port: 80,
-  path: 'rest/entities/26739?detail=full'
+  path: '/rest/entities/26739?detail=full'
   //, method: 'GET'
 };
 

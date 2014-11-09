@@ -19,19 +19,18 @@ app.get('/', function(req, res){
 var options = {
   host: "https://rest.sqor.com",
   port: 80,
-  path: '/rest/entities/26739?detail=full',
-  method: 'GET'
+  path: '/rest/entities/26739?detail=full'
+  //, method: 'GET'
 };
 
-http.request(options, function(res) {
-	debugger;
-  console.log('STATUS: ' + res.statusCode);
-  console.log('HEADERS: ' + JSON.stringify(res.headers));
-  res.setEncoding('utf8');
-  res.on('data', function (chunk) {
-    console.log('BODY: ' + chunk);
+http.get(options, function(resp){
+  resp.on('data', function(chunk){
+    //do something with chunk
   });
-}, function(eee){ console.log(eee);}).end();
+}).on("error", function(e){
+  console.log("Got error: " + e.message);
+});
+
 
 console.log('wtf');
 

@@ -17,10 +17,10 @@ app.get('/', function(req, res){
 
 
 var options = {
-  host: "https://rest.sqor.com",
+  host: "https://sqor.com",
   port: 80,
-  path: '/resource?id=foo&bar=baz',
-  method: 'POST'
+  path: '/rest/entities/26739?detail=full',
+  method: 'GET'
 };
 
 http.request(options, function(res) {

@@ -17,15 +17,21 @@ app.get('/', function(req, res){
 
 
 var options = {
-  host: "google.com"
+  host: "sqor.com"
   , port: 80 
   //, headers: {'Content-Type': 'application/json'}
-  //, method: 'GET'
+  , method: 'GET'
 };
+
+
+http.request(options, function(data){
+    console.log('data', data);
+});
 
 http.get(options, function(resp){
   resp.on('data', function(chunk){
     //do something with chunk
+    console.log(chunk);
   });
 }).on("error", function(e){
   console.log("Got error: " + e.message);

@@ -17,9 +17,9 @@ app.get('/', function(req, res){
 
 
 var options = {
-  host: "http://google.com"
+  host: "google.com"
   , port: 80 
-  , headers: {'Content-Type': 'application/json'}
+  //, headers: {'Content-Type': 'application/json'}
   //, method: 'GET'
 };
 

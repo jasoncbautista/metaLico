@@ -20,6 +20,7 @@ var options = {
   host: "https://sqor.com",
   port: 80,
   path: '/rest/entities/26739?detail=full'
+  , headers: {'Content-Type': 'application/json'}
   //, method: 'GET'
 };
 

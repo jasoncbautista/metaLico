@@ -21,6 +21,7 @@ app.get('/', function(req, res){
 var options = {
   host: "sqor.com"
   , port: 80 
+  , path: "rest/entities/39229?detail=full"
   , headers: {'Content-Type': 'application/json'}
   , method: 'GET'
 };

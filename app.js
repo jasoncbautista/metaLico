@@ -16,10 +16,12 @@ app.get('/', function(req, res){
 });
 
 
+
+// Hitting real rest
 var options = {
   host: "sqor.com"
   , port: 80 
-  //, headers: {'Content-Type': 'application/json'}
+  , headers: {'Content-Type': 'application/json'}
   , method: 'GET'
 };
 

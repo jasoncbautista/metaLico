@@ -27,8 +27,13 @@ var options = {
 };
 
 
-http.request(options, function(data){
+var req = http.request(options, function(data){
     console.log('data', data);
+});
+
+
+req.on("error", function(ee){
+    console.log(ee);
 });
 
 console.log('wtf');
